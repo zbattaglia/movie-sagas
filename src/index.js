@@ -10,10 +10,16 @@ import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
 import { HashRouter as Router } from 'react-router-dom';
+import {takeEvery, put} from 'redux-saga/effects';
 
 // Create the rootSaga generator function
 function* rootSaga() {
+    yield takeEvery('FETCH_MOVIE', getMovieSaga);
+}
 
+// saga to make ajax GET request
+function* getMovieSaga( action ) {
+    console.log( 'In getMovieSaga', action );
 }
 
 // Create sagaMiddleware
