@@ -12,9 +12,16 @@ class MovieList extends Component {
     return (
       <div className="MovieList">
         <p>Movie List Goes Here</p>
+        {JSON.stringify(this.props.movies)}
       </div>
     );
   }
 }
 
-export default connect()(MovieList);
+const putPropsOnReduxStore = (reduxStore) => ({
+  
+  movies: reduxStore.movies,
+
+});
+
+export default connect(putPropsOnReduxStore)(MovieList);
