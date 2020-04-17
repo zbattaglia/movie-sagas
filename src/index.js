@@ -15,8 +15,22 @@ import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
-    yield takeEvery('FETCH_MOVIE', getMovieSaga);
+    yield takeEvery( 'FETCH_MOVIE', getMovieSaga );
+    yield takeEvery( 'FETCH_GENRES', getGenresSaga );
 }
+
+// saga makes a get request for all genres associated with a specific movie id
+function* getGenresSaga( action ) {
+    console.log( 'In getGenresSaga', action );
+    try{
+        const response = yield axios.get( `/movies/genres/${action.payload}` );
+        console.log( 'Got details', response );
+        yield put( { type: 'SET_GENRES', payload: response.data } );
+    }
+    catch( error ){
+        console.log( 'Error getting details', error );
+    }
+}; // end getDetailsSaga
 
 // saga to make ajax GET request
 function* getMovieSaga( action ) {
@@ -29,7 +43,7 @@ function* getMovieSaga( action ) {
     catch(error){
         console.log('Error with Search GET', error);
     }
-}
+}; // end getMovieSaga
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
@@ -54,11 +68,22 @@ const genres = (state = [], action) => {
     }
 }
 
+// stores the id of the movie selected on the list page for use on other pages.
+const selectedMovie = (state = null, action) => {
+    switch (action.type) {
+        case 'SELECT_MOVIE':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        selectedMovie,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

@@ -16,7 +16,7 @@ class MovieList extends Component {
     return (
       <div className="MovieList">
         { this.props.movies.map( movie => 
-          <MovieItem key={ movie.id } movie={ movie } />
+          <MovieItem key={ movie.id } movie={ movie } history={ this.props.history }/>
           )}
       </div>
     );

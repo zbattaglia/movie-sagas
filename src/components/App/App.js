@@ -12,11 +12,6 @@ import ListPage from '../Pages/ListPage/ListPage';
 
 class App extends Component {
 
-  // on initial startup route the user to the list page
-  componentDidMount() {
-    this.props.history.push( '/list' );
-  }; // end componentDidMount
-
   // Renders the entire app on the DOM
   // Sets up routes to different pages
   render() {
@@ -24,7 +19,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Router>
-          <Route path='/list' component={ ListPage } />
+          <Route exact path ='/' component={ ListPage } />
           <Route path='/details' component={ DetailsPage } />
           <Route path='/edit' component={ EditPage } />
         </Router>
