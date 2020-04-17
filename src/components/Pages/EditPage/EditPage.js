@@ -3,12 +3,26 @@ import {connect} from 'react-redux';
 
 class EditPage extends Component {
 
-  // set initial state for capturing edits
-  state = {
-    id: this.props.selectedMovie,
-    title: '',
-    description: '',
-  }; 
+    // set initial state for capturing edits
+    state = {
+      id: this.props.selectedMovie,
+      title: '',
+      description: '',
+    }; 
+
+  // on page load gets the durrent movie and sets initial state to that movies title and description
+  // this automatically shows the titel and description in the edit fields
+  componentDidMount(){
+    for ( let movie of this.props.movies ) {
+      if ( movie.id === this.props.selectedMovie ) {
+        this.setState({
+          ...this.state,
+          title: movie.title,
+          description: movie.description,
+        })
+      }
+    }
+  }
 
   // detects changes on either input field and updates local state
   handleChange = ( event, editCategory ) => {
@@ -30,12 +44,13 @@ class EditPage extends Component {
   } // end handleClick
 
   render() {
+
     return (
       <div className="edits">
         <div className="editField">
-          <label>Edit Title:</label><input onChange={ ( event ) => this.handleChange( event, 'title' )}></input>
+          <label>Edit Title:</label><input onChange={ ( event ) => this.handleChange( event, 'title' )} value={ this.state.title }></input>
           <br />
-          <label>Edit Description</label><input onChange={ ( event ) => this.handleChange( event, 'description' )}></input>
+          <label>Edit Description</label><input onChange={ ( event ) => this.handleChange( event, 'description' )} value={ this.state.description }></input>
         </div>
         <button onClick={ (event) => this.handleClick( 'cancel' ) }>Cancel</button>
         <button onClick={ (event) => this.handleClick( 'save' ) }>Save</button>
@@ -46,6 +61,7 @@ class EditPage extends Component {
 
 const putPropsOnReduxStore = (reduxStore) => ({
   
+  movies: reduxStore.movies,
   selectedMovie: reduxStore.selectedMovie,
 
 });
