@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import GenreList from '../../GenresList/GenresList';
 import './DetailsPage.css';
 
 class DetailsPage extends Component {
@@ -27,9 +28,7 @@ class DetailsPage extends Component {
         <div className="details-Body">
           <img src={ movie.poster } alt="POSTER" /> { movie.description }
         </div>
-        <p>Genres: { this.props.genres.map(genre => 
-              genre.name
-            )}</p>
+        <GenreList />
       </div>
         <footer>
           <button onClick={ (event) => this.handleClick( '/' ) }>Back to List</button>
