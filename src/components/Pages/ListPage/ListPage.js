@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import MovieItem from '../../MovieItem/MovieItem';
 
 class MovieList extends Component {
 
@@ -8,11 +9,15 @@ class MovieList extends Component {
     this.props.dispatch( { type: 'FETCH_MOVIE' } );
   }
 
+
+  // the render function gets the list of movies from redux state, maps over the array and passes each movie to
+  // the movie item component for individual rendering
   render() {
     return (
       <div className="MovieList">
-        <p>Movie List Goes Here</p>
-        {JSON.stringify(this.props.movies)}
+        { this.props.movies.map( movie => 
+          <MovieItem key={ movie.id } movie={ movie } />
+          )}
       </div>
     );
   }
