@@ -3,9 +3,28 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
+// gets the id of the movie to edit as a URL parameter
+// the req.body has the edited title and description
+router.put( '/:id', (req, res) => {
+    let id = req.params.id;
+    let data = req.body;
+    console.log( `Editing movie ${id} with ${data.title} and ${data.description}`);
+    let queryText = `UPDATE "movies" SET "title" = $1, "description" = $2
+                        WHERE "id" = $3;`;
+    pool.query( queryText, [ data.title, data.description, id ] )
+        .then( (result) => {
+            console.log( 'Updated Database' );
+            res.sendStatus( 200 );
+        })
+        .catch( (error) => {
+            console.log( 'Error editing database', error );
+            res.sendStatus( 500 );
+        })
+}); // end PUT route
+
 // return all favorite images
 router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM movies';
+    const queryText = 'SELECT * FROM movies ORDER BY "id"';
    pool.query( queryText )
     .then( (result) => { 
         console.log( 'Got movies on server' );

@@ -57,7 +57,6 @@ class DetailsPage extends Component {
 
 const putPropsOnReduxStore = (reduxStore) => ({
   
-  genres: reduxStore.genres,
   selectedMovie: reduxStore.selectedMovie,
   movies: reduxStore.movies,
 
