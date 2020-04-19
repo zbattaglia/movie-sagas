@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import { CardContent, CardActions } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+// import { BrowserRouter as Router } from 'react-router-dom';
 
 const styles = theme => ({
   card: {
@@ -24,6 +25,14 @@ const styles = theme => ({
 });
 
 class DetailsPage extends Component {
+
+  // getDetails(){
+  //   let movieId = this.props.match.params.id;
+  //   this.props.dispatch( { type: 'FETCH_GENRES', payload: movieId } );
+  //   this.props.dispatch( { type: 'SELECT_MOVIE', payload: movieId } );
+  //   console.log( 'ID from params:', movieId );
+  // }
+
 
   // event listener to detect click of either button
   handleClick = ( button ) => {
@@ -63,7 +72,6 @@ class DetailsPage extends Component {
   
 
   render() {
-
     // the selected movie is the idea of the movie clicked on the last page
     // this loops through movieList stored in the redux state until that id is found and renders the details
     let movieDetails = null;
