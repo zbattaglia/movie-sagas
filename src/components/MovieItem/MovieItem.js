@@ -18,6 +18,32 @@ class MovieItem extends Component {
         this.props.history.push( '/details' )
     }; // end handleClick
 
+    // this finds the genres associated with the specific movie by comparing the id's
+    // passess the genre to the formatter to format the genre list
+    getGenres( movie ){
+        for( let item of this.props.genres ) {
+            if( item.id === movie.id ) {
+                // return this.formatGenres({item})
+                let genres = this.formatGenres( item.genres );
+                return <p>{genres}</p>
+            }
+        }
+    }
+
+    // returns the genres for the selected movie in the correct format
+    formatGenres( genres ){
+        let formattedGenres = '';
+        for ( let i = 0; i < genres.length; i++ ){
+            if ( i === 0 ){
+                formattedGenres += genres[0];
+            }
+            else {
+                formattedGenres += `, ${genres[i]}`
+            }
+        }
+        return formattedGenres;
+    }
+
     render() {
         let movie = this.props.movie;
         return (
@@ -29,11 +55,17 @@ class MovieItem extends Component {
                     <img src={ movie.poster } alt="POSTER" onClick={ () => this.handleClick(  movie.id ) } />
                 </div>
                 <div className="genres">
-                    <p>TEST GENRES</p>
+                    { this.getGenres( movie ) }
                 </div>
             </div>
         );
     }
 }
 
-export default connect()(MovieItem);
+const putPropsOnReduxStore = (reduxStore) => ({
+  
+    genres: reduxStore.genres,
+  
+  });
+  
+  export default connect(putPropsOnReduxStore)(MovieItem);
