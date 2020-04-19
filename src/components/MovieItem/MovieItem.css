@@ -11,3 +11,17 @@
     width: 20%;
     margin: 2.5%;
 }
+
+.title{
+    margin-top: 2em;;
+    color: white;
+    height: 2.5em;
+}
+
+.movieList {
+    margin-top: em;;
+}
+
+.genres{
+    color: white;
+}

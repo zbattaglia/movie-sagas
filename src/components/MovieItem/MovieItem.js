@@ -23,8 +23,14 @@ class MovieItem extends Component {
         let movie = this.props.movie;
         return (
             <div className="movieDisplay">
+                <div className="title">
+                    {movie.title}
+                </div>
                 <div className="movieDisplay-Body">
                     <img src={ movie.poster } alt="POSTER" onClick={ () => this.handleClick(  movie.id ) } />
+                </div>
+                <div className="genres">
+                    <p>TEST GENRES</p>
                 </div>
             </div>
         );
