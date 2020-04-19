@@ -20,7 +20,7 @@ class App extends Component {
         <Header />
         <Router>
           <Route exact path ='/' component={ ListPage } />
-          <Route path='/details/:id' component={ DetailsPage } />
+          <Route path='/details' component={ DetailsPage } />
           <Route path='/edit' component={ EditPage } />
         </Router>
       </div>

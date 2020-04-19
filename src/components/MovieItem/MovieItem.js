@@ -12,10 +12,10 @@ class MovieItem extends Component {
     // id in redux state
     // route to details page
     handleClick = ( movieId ) => {
-        // console.log( 'Got a click on a movie', movieId );
+        console.log( 'Got a click on a movie', movieId );
         this.props.dispatch( { type: 'FETCH_GENRES', payload: movieId } );
         this.props.dispatch( { type: 'SELECT_MOVIE', payload: movieId } );
-        this.props.history.push( `/details/${movieId}` )
+        this.props.history.push( `/details/` )
     }; // end handleClick
 
     // this finds the genres associated with the specific movie by comparing the id's
