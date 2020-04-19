@@ -11,7 +11,6 @@ import TextField from '@material-ui/core/TextField';
 const styles = theme => ({
   card: {
     width: 600,
-    marginTop: 10,
     minWidth: 450,
     minHeight: 350,
     marginTop: 25,

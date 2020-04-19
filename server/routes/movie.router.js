@@ -53,5 +53,23 @@ router.get('/genres/:id', (req, res) => {
     });
 });
 
+// router to get all movies genres fro display on list page
+router.get('/genres', (req, res) => {
+    console.log( `Getting genres from ${req.params.id}`)
+    const queryText = `SELECT "movies"."id", array_agg("genres"."name") "genres" FROM "movies_genres"
+                        RIGHT OUTER JOIN "movies" ON "movies_genres"."movie_id" = "movies"."id"
+                        LEFT OUTER JOIN "genres" ON "movies_genres"."genre_id" = "genres"."id"
+                        GROUP BY "movies"."id"
+                        ORDER BY "movies"."id";`;
+    pool.query( queryText )
+        .then( (result) => { 
+            console.log( 'Got movie genres on server' );
+            res.send(result.rows); })
+        .catch( (error) => {
+            console.log( 'Error completing SELECT movie genres query', error );
+            res.sendStatus(500);
+    });
+});
+
 
 module.exports = router;

@@ -4,16 +4,13 @@ import MovieItem from '../../MovieItem/MovieItem';
 // styles
 import './ListPage.css';
 import { unstable_Box as Box } from '@material-ui/core/Box';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-
 
 class MovieList extends Component {
 
   // on page load dispatch FETCH_MOVIE to call getMovieSaga on index.js
   componentDidMount() {
     this.props.dispatch( { type: 'FETCH_MOVIE' } );
+    this.props.dispatch( { type: 'FETCH_ALL_GENRES' } );
   }
 
 

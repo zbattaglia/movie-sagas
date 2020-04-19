@@ -18,6 +18,7 @@ function* rootSaga() {
     yield takeEvery( 'FETCH_MOVIE', getMovieSaga );
     yield takeEvery( 'FETCH_GENRES', getGenresSaga );
     yield takeEvery( 'EDIT_MOVIE', editMovieSaga );
+    yield takeEvery( 'FETCH_ALL_GENRES', getAllGenresSaga );
 }
 
 // passes movie edits to server in PUT request
@@ -32,6 +33,19 @@ function* editMovieSaga( action ) {
         console.log( 'Error making PUT to server' );
     }
 }; // end editMovieSaga
+
+// saga makes request to get all the genres for each movie
+function* getAllGenresSaga( action ) {
+    console.log( 'In getAllGenresSaga', action );
+    try{
+        const response = yield axios.get( '/movies/genres' )
+        console.log( 'Got all Genres', response.data );
+        yield put( { type: 'SET_GENRES', payload: response.data } );
+    }
+    catch( error ) {
+        console.log( 'Error gettig all genres', error );
+    }
+}
 
 // saga makes a get request for all genres associated with a specific movie id
 function* getGenresSaga( action ) {

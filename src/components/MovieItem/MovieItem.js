@@ -19,7 +19,6 @@ class MovieItem extends Component {
     }; // end handleClick
 
     render() {
-        const classes = this.props.classes;
         let movie = this.props.movie;
         return (
             <div className="movieDisplay">
