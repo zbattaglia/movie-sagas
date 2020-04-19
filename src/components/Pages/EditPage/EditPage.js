@@ -1,5 +1,33 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import './EditPage.css';
+//
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import { CardContent, CardActions } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+const styles = theme => ({
+  card: {
+    width: 600,
+    marginTop: 10,
+    minWidth: 450,
+    minHeight: 350,
+    marginTop: 25,
+    display: 'inline-block',
+    boxShadow: '0 16px 70px -12px',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    marginBottom: 50,
+    minWidth: 400,
+  },
+  button: {
+    margin: theme.spacing.unit,
+},
+});
 
 class EditPage extends Component {
 
@@ -44,17 +72,19 @@ class EditPage extends Component {
   } // end handleClick
 
   render() {
-
+    const classes = this.props.classes;
     return (
-      <div className="edits">
-        <div className="editField">
-          <label>Edit Title:</label><input onChange={ ( event ) => this.handleChange( event, 'title' )} value={ this.state.title }></input>
+      <Card className={classes.card}>
+        <CardContent className="editField">
+          <TextField fullWidth label="Edit Title" id="standard" type="text" onChange={ ( event ) => this.handleChange( event, 'title' )} value={ this.state.title }></TextField>
           <br />
-          <label>Edit Description</label><input onChange={ ( event ) => this.handleChange( event, 'description' )} value={ this.state.description }></input>
-        </div>
-        <button onClick={ (event) => this.handleClick( 'cancel' ) }>Cancel</button>
-        <button onClick={ (event) => this.handleClick( 'save' ) }>Save</button>
-      </div>
+          <TextField fullWidth multiline label="Edit Description" id="standard" type="text" onChange={ ( event ) => this.handleChange( event, 'description' )} value={ this.state.description }></TextField>
+        </CardContent>
+        <CardActions className="footer">
+          <Button variant="contained" className={classes.button} onClick={ (event) => this.handleClick( 'cancel' ) }>Cancel</Button>
+          <Button variant="contained" className={classes.button} onClick={ (event) => this.handleClick( 'save' ) }>Save</Button>
+        </CardActions>
+      </Card>
     );
   }
 }
@@ -66,4 +96,4 @@ const putPropsOnReduxStore = (reduxStore) => ({
 
 });
 
-export default connect(putPropsOnReduxStore)(EditPage);
+export default connect(putPropsOnReduxStore)(withStyles(styles)(EditPage));

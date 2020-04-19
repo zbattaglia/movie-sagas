@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import MovieItem from '../../MovieItem/MovieItem';
+// styles
+import './ListPage.css';
+import { unstable_Box as Box } from '@material-ui/core/Box';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+
 
 class MovieList extends Component {
 
@@ -14,10 +21,16 @@ class MovieList extends Component {
   // the movie item component for individual rendering
   render() {
     return (
-      <div className="MovieList">
-        { this.props.movies.map( movie => 
-          <MovieItem key={ movie.id } movie={ movie } history={ this.props.history }/>
-          )}
+      <div id="MoviePage">
+        <Box className="ListBorder" id="left">
+        </Box>
+        <Box id="MovieList">
+          { this.props.movies.map( movie => 
+            <MovieItem key={ movie.id } movie={ movie } history={ this.props.history }/>
+            )}
+        </Box>
+        <Box className ="ListBorder" id="right">
+        </Box>
       </div>
     );
   }

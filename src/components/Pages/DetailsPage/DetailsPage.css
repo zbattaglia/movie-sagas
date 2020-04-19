@@ -1,3 +1,9 @@
 .details-Body {
     display: inline-flex;;
 }
+
+.footer{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+}

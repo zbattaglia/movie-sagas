@@ -1,0 +1,30 @@
+#MovieList{
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 80%;
+    background-color: #101010;
+    overflow: scroll;
+    height: 500px;
+}
+
+#MovieList::-webkit-scrollbar {
+    display: none;
+}
+
+#MoviePage {
+    display: inline-flex;
+}
+
+.ListBorder {
+    width: 10%;
+    background-image: url(https://live.staticflickr.com/5043/5300777227_aa6cf1ab77_c.jpg);
+    background-repeat: no-repeat;
+}
+
+#left {
+ left: 200px;   
+}
+
+#right{
+    right: 10px;
+}

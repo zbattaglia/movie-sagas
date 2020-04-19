@@ -1,3 +1,13 @@
 .movieDisplay-Body {
     display: inline-flex;
+    box-shadow: 25px 20px 10px black;
+}
+
+.movieDisplay:hover {
+    transform: scale(1.25);
+}
+
+.movieDisplay {
+    width: 20%;
+    margin: 2.5%;
 }

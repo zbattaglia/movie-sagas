@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './MovieItem.css';
 
+
+
 // Gets each movie passed to it from the list page
 // renders the title, poster, and description for each movie in a div
 class MovieItem extends Component {
@@ -17,13 +19,12 @@ class MovieItem extends Component {
     }; // end handleClick
 
     render() {
+        const classes = this.props.classes;
         let movie = this.props.movie;
         return (
             <div className="movieDisplay">
-                <h2>{ movie.title }</h2>
-                <br />
                 <div className="movieDisplay-Body">
-                    <img src={ movie.poster } alt="POSTER" onClick={ () => this.handleClick(  movie.id ) }/> { movie.description }
+                    <img src={ movie.poster } alt="POSTER" onClick={ () => this.handleClick(  movie.id ) } />
                 </div>
             </div>
         );
