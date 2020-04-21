@@ -68,7 +68,7 @@ class DetailsPage extends Component {
         </CardContent>
           <CardActions className="footer">
             <Button variant='contained' className={classes.button} onClick={ (event) => this.handleClick( '/' ) }>Back to List</Button>
-            <Button variant='contained' className={classes.button} onClick={ (event) => this.handleClick( '/edit' ) }>Edit</Button>
+            <Button variant='contained' className={classes.button} onClick={ (event) => this.handleClick( `/edit` ) }>Edit</Button>
           </CardActions>
       </Card>
       )
