@@ -4,7 +4,7 @@
     width: 80%;
     background-color: #101010;
     overflow: scroll;
-    height: 500px;
+    height: 100vh;
 }
 
 #MovieList::-webkit-scrollbar {
@@ -13,18 +13,13 @@
 
 #MoviePage {
     display: inline-flex;
+    height: 100vh;
 }
 
 .ListBorder {
     width: 10%;
     background-image: url(https://live.staticflickr.com/5043/5300777227_aa6cf1ab77_c.jpg);
+    background-size: auto 100%;
     background-repeat: no-repeat;
-}
-
-#left {
- left: 200px;   
-}
-
-#right{
-    right: 10px;
+    height: 100vh;
 }

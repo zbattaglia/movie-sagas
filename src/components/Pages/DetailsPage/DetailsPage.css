@@ -1,9 +1,14 @@
 .details-Body {
-    display: inline-flex;;
+    display: inline-flex;
 }
 
 .footer{
         display: flex;
         justify-content: space-between;
         width: 100%;
+}
+
+#card {
+    height: 100vh;
+    background-color: black;
 }

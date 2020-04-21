@@ -15,7 +15,7 @@ class MovieItem extends Component {
         console.log( 'Got a click on a movie', movieId );
         this.props.dispatch( { type: 'FETCH_GENRES', payload: movieId } );
         this.props.dispatch( { type: 'SELECT_MOVIE', payload: movieId } );
-        this.props.history.push( `/details/` )
+        this.props.history.push( `/details/${movieId}` )
     }; // end handleClick
 
     // this finds the genres associated with the specific movie by comparing the id's

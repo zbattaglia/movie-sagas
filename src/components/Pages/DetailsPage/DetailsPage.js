@@ -14,8 +14,9 @@ const styles = theme => ({
   card: {
     width: 600,
     minWidth: 450,
-    minHeight: 500,
+    minHeight: 400,
     marginTop: 25,
+    marginBottom: 25,
     display: 'inline-block',
     boxShadow: '0 16px 70px -12px',
   },
@@ -26,11 +27,14 @@ const styles = theme => ({
 
 class DetailsPage extends Component {
 
-  // getDetails(){
+  // componentDidMount(){
   //   let movieId = this.props.match.params.id;
-  //   this.props.dispatch( { type: 'FETCH_GENRES', payload: movieId } );
-  //   this.props.dispatch( { type: 'SELECT_MOVIE', payload: movieId } );
+  //   // this.props.dispatch( { type: 'FETCH_GENRES', payload: movieId } );
+  //   // this.props.dispatch( { type: 'SELECT_MOVIE', payload: movieId } );
   //   console.log( 'ID from params:', movieId );
+  //   this.setState({
+  //     data: true,
+  //   })
   // }
 
 
@@ -51,13 +55,14 @@ class DetailsPage extends Component {
     if( movie === null ) {
       return <></>
     }
+    // {movie && movie.title}, {movie && movie.poster}, etc..... conditional render
     else {
       return (
       <Card className={ classes.card }>
         <CardHeader title={movie.title}></CardHeader>
         <CardContent className="details">
           <div className="details-Body">
-            <img src={ movie.poster } alt="POSTER" /> { movie.description }
+            <img src={ movie.poster } alt="POSTER" />{ movie.description }
           </div>
           <p>Genre's: <GenreList /></p>
         </CardContent>
@@ -81,11 +86,12 @@ class DetailsPage extends Component {
       }
     }
 
-    return (
-      <div id="card">{ this.display( movieDetails ) }</div>
-    );
+      return (
+        <div id="card">{ this.display( movieDetails ) }</div>
+      );
+    }
   }
-}
+
 
 const putPropsOnReduxStore = (reduxStore) => ({
   
