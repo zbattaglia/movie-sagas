@@ -8,9 +8,9 @@ This application is a sample movie selection program. The user starts on a home 
 
 ## Screen Shot
 
-![Home Page](pictures/HomePage.png "Movie Home Page")
-![Movie Details](pictures/MovieDetails.png "Details after selecting a movie")
-![Edit Movie](pictures/EditMovieDetails.png "Editing a Movie's Details")
+![Home Page](public/screenShots/HomePage.png "Movie Home Page")
+![Movie Details](public/screenShots/MovieDetails.png "Details after selecting a movie")
+![Edit Movie](public/screenShots/EditMovieDetails.png "Editing a Movie's Details")
 
 ### Prerequisites
 
