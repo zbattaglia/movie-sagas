@@ -4,7 +4,13 @@
 
 _Duration: 2 days_
 
-This application takes the user to a home page displaying a list of movies and their genres. By clicking on a movie poster the user can see a more details description of the movie and edit the movies title and description. Saving the edits updates the list page. This porject reinforced skills with react, redux, and sagas. As well as material-ui and CSS styling.
+This application is a sample movie selection program. The user starts on a home page displaying a list of movies and their genres. By clicking on a movie poster the user can see a more details description of the movie and edit the movies title and description. Saving the edits updates the list page. This porject reinforced skills with react, redux, and sagas. As well as material-ui and CSS styling.
+
+## Screen Shot
+
+![Home Page](pictures/HomePage.png "Movie Home Page")
+![Movie Details](pictures/MovieDetails.png "Details after selecting a movie")
+![Edit Movie](pictures/EditMovieDetails.png "Editing a Movie's Details")
 
 ### Prerequisites
 
